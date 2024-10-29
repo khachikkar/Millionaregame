@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  Navigate
+} from "react-router-dom";
+import LogIn from './pages/auth/login';
+import Register from './pages/auth/register';
+import Intro from './pages/intro';
+import Game from './pages/game';
+
 
 function App() {
+
+
+const [isAuth, setIsAuth] = useState(true)
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider
+      router={createBrowserRouter(
+        createRoutesFromElements(
+          <Route path="/" element={<Intro />}>
+            <Route path="game" element={ isAuth ? <Game /> : <Navigate to="/login" />} />
+            <Route path="register" element={ isAuth ?  <Navigate to="/game" /> : <Register />} />
+            <Route path="login" element={ isAuth ?  <Navigate to="/game" /> : <LogIn setIsAuth={setIsAuth} />} />
+          </Route>
+        )
+      )}
+    />
     </div>
   );
 }
