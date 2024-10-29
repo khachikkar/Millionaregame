@@ -1,0 +1,23 @@
+.GameBoardCont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.gameBlock{
+    border: 1px solid red;
+    max-width: 500px;
+    max-width: 500px;
+}
+
+.versions{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    gap: 20px;
+
+    span{
+        border: 1px solid black;
+    }
+}
