@@ -14,12 +14,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 import "./index.css"
-import { GameContext } from '../../../context/context';
 
 
 const Register = () => {
 
-    const {setUserData} = useContext(GameContext)
 
     const [form] = Form.useForm();
   const navigate = useNavigate();
