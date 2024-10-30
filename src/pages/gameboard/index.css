@@ -1,26 +1,51 @@
 .GameBoardCont{
     display: flex;
+
     align-items: center;
     justify-content: center;
     /* flex-direction: column; */
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     /* display: flex; */
     gap: 10px;
+    background-color: rgba(240, 248, 255, 0.506);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    width: 800px;
+    padding: 5px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
        .GameBoardCont{
         flex-direction: column;
+        width: 400px;
        }
 }
 
+.pointsCont{
+    /* border: 1px solid green; */
+    width: 260px;
+    background-color: rgba(1, 1, 43, 0.622);
+    backdrop-filter: blur(20px);
+    color: white;
+    padding: 20px;
+}
+
+
+
+.questBlock{
+    width: 420px;
+}
+
 .points{
-    border: 1px solid green;
-    width: 100%;
+    h1{
+        color: white;
+        -webkit-text-stroke: 1px black;
+    }
 }
 
 .pointsCont{
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
+    border-radius: 10px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -29,33 +54,48 @@
 
 }
 
+
 .pItem{
-    border: 1px solid black;
+    border: 1px solid gray;
+    background-color: rgba(240, 248, 255, 0.558);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80%;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .pItem.highlight {
-    background-color: green;
+    background-color: #28a745;
+    border: none;
     color: white; /* Optional: Adjust text color for better contrast */
   }
 
-.gameBlock{
-    border: 1px solid red;
-    max-width: 500px;
-    max-width: 500px;
+
+
+
+.modal{
+    /* border: 1px solid green; */
+    background-color: rgba(240, 248, 255, 0.558);
+    backdrop-filter: blur(10px);
+    width: 300px;
+    padding: 10px;
+    height: 100px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+
 }
 
-.versions{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-    gap: 20px;
+.win{
+    background-color: #28a745;
+}
 
-    span{
-        border: 1px solid black;
-    }
+.nowin{
+    background-color: #dc3545;
 }

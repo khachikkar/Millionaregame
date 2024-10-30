@@ -1,0 +1,8 @@
+
+.startGame{
+    background-color: rgba(255, 255, 255, 0.512);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 20px;
+    width: 400px;
+}

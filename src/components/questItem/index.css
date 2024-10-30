@@ -1,9 +1,61 @@
-.versions span.green{
-    background-color: green;
+/* Game container */
+.gameBlock {
+    background-color: #1c1e22da;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    padding: 10px 5px;
+    color: #f9f9f9;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Question text styling */
+.gameBlock h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 600;
     color: white;
 }
 
-.versions span.orange{
-    background-color: orange;
-    /* color: white; */
+/* Options container */
+.versions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* flex-direction: column; */
+    gap: 10px;
+}
+
+/* Option styling */
+.versions span {
+    /* display: inline-block; */
+    background-color: #444c57;
+    color: #ffffff;
+    border: 2px solid #444c57;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Green and orange styles for answer feedback */
+.versions span.green {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.versions span.orange {
+    background-color: #676464;
+    border-color: gray;
+    color: white;
+}
+
+/* Hover effect */
+.versions span:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
 }

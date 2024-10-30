@@ -3,19 +3,39 @@ nav{
     padding: 10px;
     height: 50px;
     width: 80%;
-    background-color: #f0f0f0;
+    background-color: #f0f0f083;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     border-bottom: 1px solid #ccc;
     align-items: center;
     justify-content: space-between;
 
 }
 
+.usertruenav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 300px;
+    /* border: 1px solid red; */
+    gap: 10px;
+
+    p{
+        font-weight: 600;
+        color: white;
+        font-size: 20px;
+    }
+}
 
 
 .mainCont{
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     /* background-color: blue; */
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
+    background-image: url("https://m.media-amazon.com/images/I/71wZi-+gTRL.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     /* background-color: rgb(46, 46, 46); */
    
     /* height: 500px; */

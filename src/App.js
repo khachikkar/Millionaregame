@@ -61,11 +61,17 @@ useEffect(()=>{
         createRoutesFromElements(
           <Route path="/" element={<Intro />}>
             <Route path="/" element={ isAuth ? <Game /> : <Navigate to="/login" />} />
-            <Route path="/game" element={ isAuth ? <Game /> : <Navigate to="/login" />} />
             <Route path="register" element={ isAuth ?  <Navigate to="/game" /> : <Register />} />
             <Route path="login" element={ isAuth ?  <Navigate to="/game" /> : <LogIn setIsAuth={setIsAuth} />} />
 
-<Route path='/game/gameboard' element={<GameBoard />} />
+            <Route path="/game" element={ isAuth ? <Game /> : <Navigate to="/login" />} />
+
+
+            <Route path='/game/gameboard' element={isAuth ? <GameBoard /> : <Navigate to="/login" />} />
+            
+            
+
+
 
 
           </Route>

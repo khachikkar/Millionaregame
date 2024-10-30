@@ -1,16 +1,16 @@
+import { Button } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import "./index.css"
 const Game = () => {
   return (
-    <div>
+    <div className='startGame'>
      <h1>Who wants to Become a Millionare Game !</h1>
 
-
-     {/* link to /game/gameboard cpage */}
      <Link to="/game/gameboard">
-     <button>Start Game</button>
+    <Button>Start the Game</Button>
      </Link>
+   
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { GameContext } from "../../context/context";
 import "./index.css";
 import QuestItem from "../../components/questItem";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
 
 const winMoney = []
 const counts = []
@@ -86,16 +87,7 @@ console.log(counts, "counts")
 
 
 
-// let last =  data[rightAnswer.length || 0]
 
-// handle Change 
-// const handleChange = () => {
-
-//     // last = data[rightAnswer.length + 1]
-// setCurrentQuestion(data[rightAnswer.length+1])
-
-
-// }
 
   return (
     <div className="GameBoardCont">
@@ -103,8 +95,6 @@ console.log(counts, "counts")
 
     <div className="points">
     <h1>Game Borad</h1>
-    {/* <p>{rightAnswer.length}</p> */}
-
 
 
     <div className="pointsCont">
@@ -116,19 +106,21 @@ console.log(counts, "counts")
               {amount}
             </div>
           ))}
-        </div>
+    </div>
 
 
     </div>
+
+
     <div>
     
     {
         lose 
         ?
         win 
-        ? <p>Congrats You Win and you have ${winMoney[winMoney.length-1]} Dollars  <Link to="/game"><button>Start New Game</button></Link></p>
-        : <p>you lose and have ${winMoney[winMoney.length-1] || "0"} Dollars Try Again <Link to="/game"><button onClick={handlenewgame}>Try Again</button></Link></p>
-        : <div> 
+        ? <div className="modal win"><h4>Congrats You Win and you have ${winMoney[winMoney.length-1]} Dollars  </h4><Link to="/game"><Button type="primary">Start New Game</Button></Link></div>
+        : <div className="modal nowin"><h4>you lose and have ${winMoney[winMoney.length-1] || "0"} Dollars Try Again </h4> <Link to="/game"><Button  type="primary" onClick={handlenewgame}>Try Again</Button></Link></div>
+        : <div className="questBlock"> 
             
         <QuestItem  item={currentQuestion} additeminright={additeminright} greenOnOption={greenOnOption} />
         <div>

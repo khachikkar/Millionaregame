@@ -1,5 +1,8 @@
 .loginCont{
-    border: 1px solid red;
-    background-color: white;
+    /* border: 1px solid red; */
+    background-color: rgba(255, 255, 255, 0.431);
    width: 400px;
+   padding: 20px;
+   border-radius: 20px;
+   backdrop-filter: blur(10px);
 }
