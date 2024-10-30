@@ -2,8 +2,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
+    border: 1px solid blue;
+    /* display: flex; */
+    gap: 10px;
+
+
 }
+
+.points{
+    border: 1px solid green;
+    width: 100%;
+}
+
+.pointsCont{
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+.pItem{
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 10px;
+}
+
+.pItem.highlight {
+    background-color: green;
+    color: white; /* Optional: Adjust text color for better contrast */
+  }
 
 .gameBlock{
     border: 1px solid red;
