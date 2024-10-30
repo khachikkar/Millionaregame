@@ -28,6 +28,7 @@ function handlenewgame (){
   const [rightAnswer, setRightAnswer] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(data[0])
 
+  const [greenOnOption, setGreenOnOption] = useState(false)
 
 const additeminright = (e)=>{
 
@@ -37,6 +38,7 @@ const comp = data[rightAnswer.length].correctOption
 
 if (answ === comp){
     console.log("right")
+    setGreenOnOption(true)
 
 
 if(rightAnswer.length === 8){
@@ -67,7 +69,10 @@ switch(counts.length){
 
 setRightAnswer([...rightAnswer, data[rightAnswer.length]]);
 
-setCurrentQuestion(data[rightAnswer.length+1])
+setTimeout(() => {
+    setCurrentQuestion(data[rightAnswer.length + 1]);
+    setGreenOnOption(false); // Reset option color
+}, 2000);
 
 counts.push(1) ///
 console.log(counts, "counts")
@@ -75,6 +80,7 @@ console.log(counts, "counts")
 }else{
     setIsLose(true)
     console.log("wrong")
+    setGreenOnOption(false)
 }
 }
 
@@ -124,7 +130,7 @@ console.log(counts, "counts")
         : <p>you lose and have ${winMoney[winMoney.length-1] || "0"} Dollars Try Again <Link to="/game"><button onClick={handlenewgame}>Try Again</button></Link></p>
         : <div> 
             
-        <QuestItem  item={currentQuestion} additeminright={additeminright} />
+        <QuestItem  item={currentQuestion} additeminright={additeminright} greenOnOption={greenOnOption} />
         <div>
             <button>Chnage a Question</button>
             <button>Area Help</button>

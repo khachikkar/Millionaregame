@@ -1,0 +1,9 @@
+.versions span.green{
+    background-color: green;
+    color: white;
+}
+
+.versions span.orange{
+    background-color: orange;
+    /* color: white; */
+}
