@@ -1,7 +1,7 @@
 import React from 'react'
 
 const QuestItem = ({item, additeminright}) => {
-    const { question, options, correctoption } = item;
+    const { question, options } = item;
   return (
     <div  className="gameBlock">
     <h2>{question}</h2>

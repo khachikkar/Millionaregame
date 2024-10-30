@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Game = () => {
   return (
@@ -7,7 +8,9 @@ const Game = () => {
 
 
      {/* link to /game/gameboard cpage */}
+     <Link to="/game/gameboard">
      <button>Start Game</button>
+     </Link>
     </div>
   )
 }

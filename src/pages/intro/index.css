@@ -1,9 +1,33 @@
 nav{
     display: flex;
     padding: 10px;
+    height: 50px;
+    width: 80%;
     background-color: #f0f0f0;
     border-bottom: 1px solid #ccc;
     align-items: center;
     justify-content: space-between;
 
+}
+
+
+
+.mainCont{
+    /* overflow-x: hidden; */
+    /* background-color: blue; */
+    border: 1px solid yellow;
+    /* background-color: rgb(46, 46, 46); */
+   
+    /* height: 500px; */
+    height: 100vh;
+    display: flex;
+    /* grid-template-columns: 1fr ; */
+    flex-direction: column;
+    width: 100%;
+    
+    /* grid-template-columns: 1fr; */
+    /* padding: 20px; */
+    align-items: center;
+    gap: 100px;
+    /* justify-content: space-between; */
 }
