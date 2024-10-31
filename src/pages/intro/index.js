@@ -8,7 +8,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../services/firebase'
 import { Button } from 'antd'
 import { Link } from 'react-router-dom'
-
+import logo from "../../img/Gemini_Generated_Image_2n11s72n11s72n11.png"
 
 const Intro = () => {
 
@@ -36,7 +36,7 @@ const handleSignOut = async()=>{
     <div className='mainCont'>
         <nav>
             
-        <p>Logo</p>
+        <img className='logo' src={logo} alt='logo' />
        {
         isAuth 
         ? <div className='usertruenav'><p>{fullname}</p> <Button onClick={handleSignOut}>Log Out</Button></div>
