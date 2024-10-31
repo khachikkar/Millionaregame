@@ -28,9 +28,10 @@ function handlenewgame (){
   const [win, setWin] =useState(false)
   const [rightAnswer, setRightAnswer] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(data[0])
-
+  const [isdisabled, setIsDisabled] = useState(false);
   const [greenOnOption, setGreenOnOption] = useState(false)
-
+    const [fiftyUsed, setFiftyUsed] = useState(false);
+  const [friendused, setFriendUsed] = useState(false);
 const additeminright = (e)=>{
 
 
@@ -85,7 +86,37 @@ console.log(counts, "counts")
 }
 }
 
+const handleArea  = ()=>{
+      const answ = currentQuestion.correctOption
+      alert(`The Area think that correct answer is ${answ}`)
+    setIsDisabled(true)
+}
 
+    const handleFriend  = ()=>{
+        const answ = currentQuestion.correctOption
+        alert(`The Kim Kardashian think that right answer is ${answ}`)
+        setFriendUsed(true)
+    }
+
+
+    const handleFiftyFifty = () => {
+        if (!fiftyUsed) {
+            const correctOption = currentQuestion.correctOption;
+            const options = currentQuestion.options;
+
+            // Get two options: correct and one random incorrect
+            const filteredOptions = options.filter(
+                (option) => option === correctOption || Math.random() > 0.5
+            ).slice(0, 2); // Ensure only 2 options remain
+
+            // Update the current question with filtered options
+            setCurrentQuestion({
+                ...currentQuestion,
+                options: filteredOptions,
+            });
+            setFiftyUsed(true); // Mark 50/50 as used
+        }
+    };
 
 
 
@@ -124,8 +155,9 @@ console.log(counts, "counts")
             
         <QuestItem  item={currentQuestion} additeminright={additeminright} greenOnOption={greenOnOption} />
         <div>
-            <button>Chnage a Question</button>
-            <button>Area Help</button>
+            <Button disabled={fiftyUsed} onClick={handleFiftyFifty}>50/50</Button>
+            <Button disabled={isdisabled} onClick={handleArea}>Area Help</Button>
+            <Button disabled={friendused} onClick={handleFriend}>Call to Friend</Button>
         </div>
         
         </div>

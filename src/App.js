@@ -69,10 +69,6 @@ useEffect(()=>{
 
             <Route path='/game/gameboard' element={isAuth ? <GameBoard /> : <Navigate to="/login" />} />
             
-            
-
-
-
 
           </Route>
         )
