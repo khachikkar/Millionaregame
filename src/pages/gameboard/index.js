@@ -1,15 +1,34 @@
-import React, { useContext, useState } from "react";
+import React, {useContext,  useState} from "react";
 import { GameContext } from "../../context/context";
 import "./index.css";
 import QuestItem from "../../components/questItem";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 
+import mainaudion from "../../voices/main.mp3"
+import win from "../../voices/win.mp3"
+import lose from "../../voices/lose.mp3"
+import lastwin from "../../voices/last.mp3"
+
+
+
+const winAudio = new Audio(win);
+const lastwinaudio = new Audio(lastwin)
+const audio = new Audio(mainaudion)
+const loseaudio = new Audio(lose)
+
+
 const winMoney = []
 const counts = []
 
+// audio.play();
+
+
+
+
 
 const GameBoard = () => {
+
 
 
 function handlenewgame (){
@@ -32,6 +51,12 @@ function handlenewgame (){
   const [greenOnOption, setGreenOnOption] = useState(false)
     const [fiftyUsed, setFiftyUsed] = useState(false);
   const [friendused, setFriendUsed] = useState(false);
+
+
+
+
+
+
 const additeminright = (e)=>{
 
 
@@ -39,14 +64,19 @@ const answ = e.target.textContent
 const comp = data[rightAnswer.length].correctOption
 
 if (answ === comp){
+    // winAudio.play()
     console.log("right")
     setGreenOnOption(true)
+
+
+
 
 
 if(rightAnswer.length === 8){
     alert(`you win $${winMoney[winMoney.length-1] || "no money"}`)
     setIsLose(true)
     setWin(true)
+    // lastwinaudio.play()
     return // must show play again button and go new game
 }
 
@@ -70,7 +100,7 @@ switch(counts.length){
 }
 
 setRightAnswer([...rightAnswer, data[rightAnswer.length]]);
-
+// winAudio.play()
 setTimeout(() => {
     setCurrentQuestion(data[rightAnswer.length + 1]);
     setGreenOnOption(false); // Reset option color
@@ -83,6 +113,7 @@ console.log(counts, "counts")
     setIsLose(true)
     console.log("wrong")
     setGreenOnOption(false)
+    // loseaudio.play()
 }
 }
 
@@ -92,14 +123,13 @@ const handleArea  = ()=>{
     setIsDisabled(true)
 }
 
-    const handleFriend  = ()=>{
+const handleFriend  = ()=>{
         const answ = currentQuestion.correctOption
         alert(`The Kim Kardashian think that right answer is ${answ}`)
         setFriendUsed(true)
     }
 
-
-    const handleFiftyFifty = () => {
+const handleFiftyFifty = () => {
         if (!fiftyUsed) {
             const correctOption = currentQuestion.correctOption;
             const options = currentQuestion.options;
@@ -125,7 +155,7 @@ const handleArea  = ()=>{
       {/* <h1>Game Board</h1> */}
 
     <div className="points">
-    <h1>Game Borad</h1>
+    <h1>Game Board</h1>
 
 
     <div className="pointsCont">
