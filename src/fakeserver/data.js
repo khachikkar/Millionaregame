@@ -1,62 +1,142 @@
 export const data = [
   {
-    question: "Which gas is most abundant in Earth's atmosphere?",
-    options: ["A: Nitrogen", "B: Carbon Dioxide", "C: Oxygen", "D: Hydrogen"],
-    correctOption: "A: Nitrogen"
+    question: {
+      en: "Which gas is most abundant in Earth's atmosphere?",
+      hy: "Ո՞ր գազն է երկրի մթնոլորտում ամենաշատը առկա:",
+    },
+    options: {
+      en: ["A: Nitrogen", "B: Carbon Dioxide", "C: Oxygen", "D: Hydrogen"],
+      hy: ["A: Ազոտ", "B: Կարբոնի Դիօքսիդ", "C: Թթվածին", "D: Ջրածին"],
+    },
+    correctOption: {
+      en: "A: Nitrogen",
+      hy: "A: Ազոտ",
+    },
   },
   {
-    question: "What part of the plant conducts photosynthesis?",
-    options: ["A: Root", "B: Leaf", "C: Stem", "D: Flower"],
-    correctOption: "B: Leaf"
+    question: {
+      en: "What part of the plant conducts photosynthesis?",
+      hy: "Բույսի որ մասն է սկսում ֆոտոսինթեզը:",
+    },
+    options: {
+      en: ["A: Root", "B: Leaf", "C: Stem", "D: Flower"],
+      hy: ["A: արմատ", "B: տերև", "C: ցողուն", "D: ծաղիկ"],
+    },
+    correctOption: {
+      en: "B: Leaf",
+      hy: "B: տերև",
+    },
   },
   {
-    question: "Which planet is known as the 'Red Planet'?",
-    options: ["A: Mars", "B: Jupiter", "C: Saturn", "D: Venus"],
-    correctOption: "A: Mars"
+    question: {
+      en: "Which planet is known as the 'Red Planet'?",
+      hy: "Ո՞ր մոլորակն է հայտնի որպես 'Կարմիր մոլորակ':",
+    },
+    options: {
+      en: ["A: Mars", "B: Jupiter", "C: Saturn", "D: Venus"],
+      hy: ["A: Մարս", "B: Յուպիտեր", "C: Սատուրն", "D: Վեներա"],
+    },
+    correctOption: {
+      en: "A: Mars",
+      hy: "A: Մարս",
+    },
   },
   {
-    question: "Which element has the chemical symbol 'O'?",
-    options: ["A: Gold", "B: Osmium", "C: Oxygen", "D: Oganesson"],
-    correctOption: "C: Oxygen"
+    question: {
+      en: "Which element has the chemical symbol 'O'?",
+      hy: "Ո՞ր տարրի քիմիական նշանն է 'Ag':",
+    },
+    options: {
+      en: ["A: Gold", "B: Osmium", "C:  Silver", "D: Oganesson"],
+      hy: ["A: Ոսկի", "B: Օսմիում", "C: Արծաթ", "D: Օգանեսոն"],
+    },
+    correctOption: {
+      en: "C: Silver",
+      hy: "C: Արծաթ",
+    },
   },
   {
-    question: "What type of energy transformation occurs in a battery?",
-    options: ["A: Kinetic to thermal", "B: Chemical to electrical", "C: Thermal to electrical", "D: Potential to kinetic"],
-    correctOption: "B: Chemical to electrical"
+    question: {
+      en: "What type of energy transformation occurs in a battery?",
+      hy: "Էներգիայի որ տեսակի փոխակերպում է տեղի ունենում մարտկոցում:",
+    },
+    options: {
+      en: ["A: Kinetic to thermal", "B: Chemical to electrical", "C: Thermal to electrical", "D: Potential to kinetic"],
+      hy: ["A: Կինետիկից-ջերմային", "B: Քիմիականից-էլեկտրական", "C: Ջերմայինից-էլեկտրական", "D: Պոտենցիալից-կինետիկ"],
+    },
+    correctOption: {
+      en: "B: Chemical to electrical",
+      hy: "B: Քիմիականից-էլեկտրական",
+    },
   },
   {
-    question: "What is the powerhouse of the cell?",
-    options: ["A: Nucleus", "B: Mitochondria", "C: Ribosome", "D: Golgi apparatus"],
-    correctOption: "B: Mitochondria"
+    question: {
+      en: "What is the powerhouse of the cell?",
+      hy: "Որն է բջջի էներգիայի կենտրոնը ( կենսաապահովման ապարատը):",
+    },
+    options: {
+      en: ["A: Nucleus", "B: Mitochondria", "C: Ribosome", "D: Golgi apparatus"],
+      hy: ["A: Նուկլեյնաթթու", "B: Միտոքոնդրիում", "C: Ռիբոսոմ", "D: Գոլջիի ապարատ"],
+    },
+    correctOption: {
+      en: "B: Mitochondria",
+      hy: "B: Միտոքոնդրիում",
+    },
   },
   {
-    question: "Who developed the theory of general relativity?",
-    options: ["A: Isaac Newton", "B: Galileo Galilei", "C: Albert Einstein", "D: Nikola Tesla"],
-    correctOption: "C: Albert Einstein"
+    question: {
+      en: "Who developed the theory of general relativity?",
+      hy: "Ո՞վ է մշակել ընդհանուր հարաբերականության տեսությունը:",
+    },
+    options: {
+      en: ["A: Isaac Newton", "B: Galileo Galilei", "C: Albert Einstein", "D: Nikola Tesla"],
+      hy: ["A: Իսահակ Նյուտոն", "B: Գալիլեո Գալիլեյ", "C: Ալբերտ Այնշտեյն", "D: Նիկոլա Տեսլա"],
+    },
+    correctOption: {
+      en: "C: Albert Einstein",
+      hy: "C: Ալբերտ Այնշտեյն",
+    },
   },
   {
-    question: "What is the chemical formula for water?",
-    options: ["A: CO2", "B: H2O", "C: O2", "D: NaCl"],
-    correctOption: "B: H2O"
+    question: {
+      en: "What is the chemical formula for eaten soil?",
+      hy: "Որն է ուտելի աղի քիմիական նշանը:",
+    },
+    options: {
+      en: ["A: CO2", "B: NaCl", "C: O2", "D: NaCl"],
+      hy: ["A: CO2", "B: NaCl", "C: O2", "D: NaCl"],
+    },
+    correctOption: {
+      en: "B: NaCl",
+      hy: "B: NaCl",
+    },
   },
   {
-    question: "What type of galaxy is the Milky Way?",
-    options: ["A: Elliptical", "B: Irregular", "C: Spiral", "D: Lenticular"],
-    correctOption: "C: Spiral"
+    question: {
+      en: "What type of galaxy is the Milky Way?",
+      hy: "Գալակտիակաների որ տեսակին է պատկանում մեր Ծիր Կաթին գալակտիկան:",
+    },
+    options: {
+      en: ["A: Elliptical", "B: Irregular", "C: Spiral", "D: Lenticular"],
+      hy: ["A: էլիպտիկ", "B: ցրված", "C: սպիրալային", "D: երկայնական"],
+    },
+    correctOption: {
+      en: "C: Spiral",
+      hy: "C: սպիրալային",
+    },
   },
   {
-    question: "What is the most common blood type?",
-    options: ["A: A", "B: B", "C: AB", "D: O"],
-    correctOption: "D: O"
-  },
-  {
-    question: "Which organ is primarily responsible for detoxifying the body?",
-    options: ["A: Lungs", "B: Heart", "C: Liver", "D: Kidneys"],
-    correctOption: "C: Liver"
-  },
-  {
-    question: "What is the speed of light in a vacuum?",
-    options: ["A: 300,000 km/s", "B: 150,000 km/s", "C: 1,000 km/s", "D: 30,000 km/s"],
-    correctOption: "A: 300,000 km/s"
+    question: {
+      en: "What is the most common blood type?",
+      hy: "Ո՞րն է ամենատարածված արյան խումբը:",
+    },
+    options: {
+      en: ["A: A", "B: B", "C: AB", "D: O"],
+      hy: ["A: A", "B: B", "C: AB", "D: O"],
+    },
+    correctOption: {
+      en: "D: O",
+      hy: "D: O",
+    },
   }
 ];

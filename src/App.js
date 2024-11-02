@@ -29,6 +29,8 @@ const [isAuth, setIsAuth] = useState(false)
 
 const [userProfileInfo, setUserProfileInfo] = useState({})
 
+const [language, setLanguage] = useState('en');
+
 
 const handleGetUserData = useCallback( async (uid)=>{
   const docRef = doc(db, "regusers", uid) // vercnum enq hamapatasxan uid ov datan
@@ -55,7 +57,7 @@ useEffect(()=>{
 
   return (
     <div className="App">
-      <GameContext.Provider value={{isAuth, data, setIsAuth, userProfileInfo, handleGetUserData}}>
+      <GameContext.Provider value={{isAuth, data, setIsAuth, userProfileInfo, handleGetUserData, language, setLanguage }}>
       <RouterProvider
       router={createBrowserRouter(
         createRoutesFromElements(

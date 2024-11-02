@@ -9,10 +9,11 @@ import { auth } from '../../services/firebase'
 import { Button } from 'antd'
 import { Link } from 'react-router-dom'
 import logo from "../../img/Gemini_Generated_Image_2n11s72n11s72n11.png"
+import translations from "../../internationization/translations";
 
 const Intro = () => {
 
-const {isAuth, userProfileInfo} = useContext(GameContext)
+const {isAuth, userProfileInfo, language, setLanguage} = useContext(GameContext)
 // const [redirectToLogin, setRedirectToLogin] = useState(false); 
 
 const handleSignOut = async()=>{
@@ -32,6 +33,11 @@ const handleSignOut = async()=>{
   //   return <Navigate to="/login" />; // Redirect to login
   // }
 
+    const handleLanguageChange = (e) => {
+        setLanguage(e.target.value);
+    };
+
+
   return (
     <div className='mainCont'>
         <nav>
@@ -39,8 +45,11 @@ const handleSignOut = async()=>{
         <img className='logo' src={logo} alt='logo' />
        {
         isAuth 
-        ? <div className='usertruenav'><p>{fullname}</p> <Button onClick={handleSignOut}>Log Out</Button></div>
-        : <Link to="/login" > <Button type='primary'>Log In</Button></Link> 
+        ? <div className='usertruenav'>  <select onChange={handleLanguageChange} value={language}>
+                <option value="en">English</option>
+                <option value="hy">Armenian</option>
+            </select><p>{fullname}</p> <Button onClick={handleSignOut}>{translations[language].logout}</Button></div>
+            : <Link to="/login"> <Button type='primary'>{translations[language].login}</Button></Link>
        } 
         
         </nav>

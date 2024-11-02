@@ -1,14 +1,16 @@
 import { Button } from 'antd'
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import {useEffect} from "react";
 import { Link } from 'react-router-dom'
 import "./index.css"
 import prestart from "../../voices/prestart.mp3"
-
+import translations from "../../internationization/translations";
+import {GameContext} from "../../context/context";
 
 
 const Game = () => {
     const audio = new Audio(prestart);
+    const {language, setLanguage} = useContext(GameContext)
 
     useEffect(() => {
         // Try to play the audio automatically
@@ -29,15 +31,26 @@ const Game = () => {
         };
     }, [audio]);
 
-  return (
-    <div className='startGame'>
-     <h1>Who wants to Become a Millionare Game !</h1>
 
-     <Link to="/game/gameboard">
-    <Button >Start the Game</Button>
-     </Link>
-   
-    </div>
+    const handleLanguageChange = (e) => {
+        setLanguage(e.target.value);
+    };
+
+  return (
+      <div className='startGame'>
+
+          <h1>{translations[language].title}</h1>
+
+          <select onChange={handleLanguageChange} value={language}>
+              <option value="en">English</option>
+              <option value="hy">Armenian</option>
+          </select>
+
+          <Link to="/game/gameboard">
+              <Button>{translations[language].startButton}</Button>
+          </Link>
+
+      </div>
   )
 }
 

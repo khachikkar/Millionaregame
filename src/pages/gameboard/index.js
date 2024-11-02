@@ -11,7 +11,7 @@ import loseaudio from "../../voices/lose.mp3"
 import lastwin from "../../voices/last.mp3"
 
 
-
+import translations from "../../internationization/translations";
 
 
 const winMoney = []
@@ -46,12 +46,16 @@ const GameBoard = () => {
 
         return () => {
             themeAudio.pause(); // Pause the audio when component unmounts
+            // lastwinAudio.pause()
             themeAudio.currentTime = (1000 * 60 ); // Reset audio to start
         };
     }, [themeAudio]);
 
 
-    function handlenewgame (){
+const {language} = useContext(GameContext)
+
+
+function handlenewgame (){
     console.log("new game")
     counts.length =0
     winMoney.length =0
@@ -59,7 +63,7 @@ const GameBoard = () => {
 
 
 
-  const { data } = useContext(GameContext);
+const { data } = useContext(GameContext);
 
 //   console.log(data);
 
@@ -81,7 +85,7 @@ const additeminright = (e)=>{
 
 
 const answ = e.target.textContent
-const comp = data[rightAnswer.length].correctOption
+const comp = data[rightAnswer.length].correctOption[language]
 
 if (answ === comp){
     winAudio.play()
@@ -137,22 +141,45 @@ console.log(counts, "counts")
 }
 }
 
+const answForhelpers = currentQuestion.correctOption[language]
+
 const handleArea  = ()=>{
-      const answ = currentQuestion.correctOption
-      alert(`The Area think that correct answer is ${answ}`)
+      alert(`The Area think that correct answer is ${answForhelpers}`)
     setIsDisabled(true)
 }
 
 const handleFriend  = ()=>{
-        const answ = currentQuestion.correctOption
-        alert(`The Kim Kardashian think that right answer is ${answ}`)
+
+        alert(`The Kim Kardashian think that right answer is ${answForhelpers}`)
         setFriendUsed(true)
     }
 
-const handleFiftyFifty = () => {
+// const handleFiftyFifty = () => {
+//         if (!fiftyUsed) {
+//             const correctOption = answForhelpers
+//             const options = currentQuestion.options[language];
+//
+//             // Get two options: correct and one random incorrect
+//             const filteredOptions = options.filter(
+//                 (option) => option === correctOption || Math.random() > 0.5
+//             ).slice(0, 2); // Ensure only 2 options remain
+//
+//             // Update the current question with filtered options
+//             setCurrentQuestion({
+//                 ...currentQuestion,
+//                 options: {
+//                     ...currentQuestion.options,
+//                     [language]: {filteredOptions}
+//                 }
+//             });
+//             setFiftyUsed(true); // Mark 50/50 as used
+//         }
+//     };
+
+    const handleFiftyFifty = () => {
         if (!fiftyUsed) {
-            const correctOption = currentQuestion.correctOption;
-            const options = currentQuestion.options;
+            const correctOption = answForhelpers;
+            const options = currentQuestion.options[language];
 
             // Get two options: correct and one random incorrect
             const filteredOptions = options.filter(
@@ -160,26 +187,28 @@ const handleFiftyFifty = () => {
             ).slice(0, 2); // Ensure only 2 options remain
 
             // Update the current question with filtered options
-            setCurrentQuestion({
-                ...currentQuestion,
-                options: filteredOptions,
-            });
+            setCurrentQuestion((prevQuestion) => ({
+                ...prevQuestion,
+                options: {
+                    ...prevQuestion.options, // Preserve other language options if they exist
+                    [language]: filteredOptions // Update the specific language options
+                },
+            }));
+
             setFiftyUsed(true); // Mark 50/50 as used
         }
     };
-
-
 
   return (
     <div className="GameBoardCont">
       {/* <h1>Game Board</h1> */}
 
     <div className="points">
-    <h1>Game Board</h1>
+    <h1>{translations[language].pointsTitle}</h1>
 
 
     <div className="pointsCont">
-          {["1000 AMD", "2000 AMD", "4000 AMD", "5000 AMD", "6000 AMD", "7000 AMD", "8000 AMD", "9000 AMD", "10000 AMD"].map((amount, index) => (
+          {translations[language].moneyPoints.map((amount, index) => (
             <div
               key={index}
               className={`pItem ${index < rightAnswer.length ? "highlight" : ""}`}
@@ -194,22 +223,22 @@ const handleFiftyFifty = () => {
 
 
     <div>
-    
+
     {
-        lose 
+        lose
         ?
-        win 
-        ? <div className="modal win"><h4>Congrats You Win and you have ${winMoney[winMoney.length-1]} Dollars  </h4><Link to="/game"><Button type="primary">Start New Game</Button></Link></div>
-        : <div className="modal nowin"><h4>you lose and have ${winMoney[winMoney.length-1] || "0"} Dollars Try Again </h4> <Link to="/game"><Button  type="primary" onClick={handlenewgame}>Try Again</Button></Link></div>
-        : <div className="questBlock"> 
-            
+        win
+        ? <div className="modal win"><h4>{translations[language].congratsWin.replace("${amount}", winMoney[winMoney.length - 1])}</h4><Link to="/game"><Button type="primary">{translations[language].startNewGame}</Button></Link></div>
+        : <div className="modal nowin"><h4>{translations[language].loseMessage.replace("${amount}", winMoney[winMoney.length - 1] || "0")}</h4> <Link to="/game"><Button  type="primary" onClick={handlenewgame}>{translations[language].tryAgain}</Button></Link></div>
+        : <div className="questBlock">
+
         <QuestItem  item={currentQuestion} additeminright={additeminright} greenOnOption={greenOnOption} />
         <div>
-            <Button disabled={fiftyUsed} onClick={handleFiftyFifty}>50/50</Button>
-            <Button disabled={isdisabled} onClick={handleArea}>Area Help</Button>
-            <Button disabled={friendused} onClick={handleFriend}>Call to Friend</Button>
+            <Button disabled={fiftyUsed} onClick={handleFiftyFifty}>{translations[language].fiftyFifty}</Button>
+            <Button disabled={isdisabled} onClick={handleArea}>{translations[language].areaHelp}</Button>
+            <Button disabled={friendused} onClick={handleFriend}>{translations[language].friendCall}</Button>
         </div>
-        
+
         </div>
     }
     </div>
