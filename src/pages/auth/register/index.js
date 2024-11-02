@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 import { createUserWithEmailAndPassword} from "firebase/auth";
 
@@ -14,14 +14,15 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 import "./index.css"
+import {GameContext} from "../../../context/context";
+import translations from "../../../internationization/translations";
 
 
 const Register = () => {
 
-
-    const [form] = Form.useForm();
+  const [form] = Form.useForm();
   const navigate = useNavigate();
-
+const {language} = useContext(GameContext);
 
     const handleRegister = async (values) => {
         // setLoading(true);
@@ -97,7 +98,7 @@ const Register = () => {
           htmlType="submit"
           
         >
-          Register
+    {translations[language].register}
         </Button>
    
 
@@ -106,7 +107,7 @@ const Register = () => {
           style={{ width: "100%" }}
           type="Link"
         >
-          Log In
+              {translations[language].login}
         </Button>
           </Link>
 </Flex>

@@ -9,12 +9,13 @@ import { Link } from "react-router-dom";
 
 import "./index.css"
 import { GameContext } from '../../../context/context';
+import translations from "../../../internationization/translations";
 
 const LogIn = () => {
 
 const [form] = Form.useForm();
 
-const {setIsAuth} = useContext(GameContext)
+const {setIsAuth, language} = useContext(GameContext)
 
 
 const handleLogin = async (values) => {
@@ -75,7 +76,7 @@ const handleLogin = async (values) => {
           htmlType="submit"
           
         >
-          Login
+    {translations[language].login}
         </Button>
    
 
@@ -84,7 +85,7 @@ const handleLogin = async (values) => {
           style={{ width: "100%" }}
           type="Link"
         >
-          Create Acount
+        {translations[language].register}
         </Button>
           </Link>
 </Flex>

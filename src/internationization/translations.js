@@ -1,5 +1,6 @@
 const translations = {
     en: {
+        register: "Create Account",
         login: 'Login',
         logout: 'Logout',
         title: "Who Wants to Become a Millionaire Game!",
@@ -28,6 +29,7 @@ const translations = {
         // Add other game text here
     },
     hy: {
+        register: "Ստեղծել հաշիվ",
         login: "Մուտք Գործել",
         logout: "Դուրս Գալ",
         title: "Ով է ուզում դառնալ միլիոնատեր խաղ!",

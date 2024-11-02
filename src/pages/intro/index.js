@@ -45,18 +45,32 @@ const handleSignOut = async()=>{
         <img className='logo' src={logo} alt='logo' />
        {
         isAuth 
-        ? <div className='usertruenav'>  <select onChange={handleLanguageChange} value={language}>
+        ? <div className='usertruenav'>
+              <select onChange={handleLanguageChange} value={language}>
                 <option value="en">English</option>
                 <option value="hy">Armenian</option>
-            </select><p>{fullname}</p> <Button onClick={handleSignOut}>{translations[language].logout}</Button></div>
-            : <Link to="/login"> <Button type='primary'>{translations[language].login}</Button></Link>
-       } 
-        
+              </select>
+
+             <p>{fullname}</p>
+
+            <Button onClick={handleSignOut}>{translations[language].logout}</Button></div>
+
+        : <div>
+                <select onChange={handleLanguageChange} value={language}>
+                    <option value="en">English</option>
+                    <option value="hy">Armenian</option>
+                </select>
+
+                <Link to="/login"> <Button type='primary'>{translations[language].login}</Button></Link>
+
+            </div>
+       }
+
         </nav>
 
-        <main >
-      <Outlet />
-      </main>
+        <main>
+            <Outlet/>
+        </main>
 
     </div>
   )
