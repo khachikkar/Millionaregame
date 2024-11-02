@@ -228,8 +228,8 @@ const handleFriend  = ()=>{
         lose
         ?
         win
-        ? <div className="modal win"><h4>{translations[language].congratsWin.replace("${amount}", winMoney[winMoney.length - 1])}</h4><Link to="/game"><Button type="primary">{translations[language].startNewGame}</Button></Link></div>
-        : <div className="modal nowin"><h4>{translations[language].loseMessage.replace("${amount}", winMoney[winMoney.length - 1] || "0")}</h4> <Link to="/game"><Button  type="primary" onClick={handlenewgame}>{translations[language].tryAgain}</Button></Link></div>
+        ? <div className="modal win"><h4>{translations[language].congratsWin.replace("{amount}", winMoney[winMoney.length - 1])}</h4><Link to="/game"><Button type="primary">{translations[language].startNewGame}</Button></Link></div>
+        : <div className="modal nowin"><h4>{translations[language].loseMessage.replace("{amount}", winMoney[winMoney.length - 1] || "0")}</h4> <Link to="/game"><Button  type="primary" onClick={handlenewgame}>{translations[language].tryAgain}</Button></Link></div>
         : <div className="questBlock">
 
         <QuestItem  item={currentQuestion} additeminright={additeminright} greenOnOption={greenOnOption} />
