@@ -103,8 +103,8 @@ export const data = [
       hy: "Որն է ուտելի աղի քիմիական նշանը:",
     },
     options: {
-      en: ["A: CO2", "B: NaCl", "C: O2", "D: NaCl"],
-      hy: ["A: CO2", "B: NaCl", "C: O2", "D: NaCl"],
+      en: ["A: CO2", "B: NaCl", "C: O2", "D: NaOH"],
+      hy: ["A: CO2", "B: NaCl", "C: O2", "D: NaOH"],
     },
     correctOption: {
       en: "B: NaCl",

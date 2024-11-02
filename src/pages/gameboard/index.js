@@ -97,7 +97,8 @@ if (answ === comp){
 
 
 if(rightAnswer.length === 8){
-    alert(`you win $${winMoney[winMoney.length-1] || "no money"}`)
+    // alert(`you win $${winMoney[winMoney.length-1] || "no money"}`)
+    counts.push(1) ///
     setIsLose(true)
     setWin(true)
     lastwinAudio.play()

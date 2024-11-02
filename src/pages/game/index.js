@@ -10,7 +10,7 @@ import {GameContext} from "../../context/context";
 
 const Game = () => {
     const audio = new Audio(prestart);
-    const {language, setLanguage} = useContext(GameContext)
+    const {language} = useContext(GameContext)
 
     useEffect(() => {
         // Try to play the audio automatically
@@ -32,19 +32,14 @@ const Game = () => {
     }, [audio]);
 
 
-    const handleLanguageChange = (e) => {
-        setLanguage(e.target.value);
-    };
+
 
   return (
       <div className='startGame'>
 
           <h1>{translations[language].title}</h1>
 
-          <select onChange={handleLanguageChange} value={language}>
-              <option value="en">English</option>
-              <option value="hy">Armenian</option>
-          </select>
+
 
           <Link to="/game/gameboard">
               <Button>{translations[language].startButton}</Button>

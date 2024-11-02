@@ -34,7 +34,7 @@ const translations = {
         logout: "Դուրս Գալ",
         title: "Ով է ուզում դառնալ միլիոնատեր խաղ!",
         startButton: "Սկսել խաղը",
-        pointsTitle: "Խաղի Տախտակ",
+        pointsTitle: "Խաղատախտակ",
         congratsWin: "Շնորհակալություն! Դուք հաղթեցիք և ունեք {amount} դրամ",
         loseMessage: "Դուք պարտվեցիք և ունեք {amount} դրամ: Փորձեք նորից",
         tryAgain: "Փորձեք նորից",
