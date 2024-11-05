@@ -13,6 +13,7 @@ const translations = {
         fiftyFifty: "50/50",
         areaHelp: "Area Help",
         friendCall: "Call to Friend",
+        lastScore : "Last Score",
         moneyPoints: [
             "1000 AMD",
             "2000 AMD",
@@ -42,6 +43,7 @@ const translations = {
         fiftyFifty: "50/50",
         areaHelp: "Դահլիճի Օգնություն",
         friendCall: "Զանգ ընկերոջը",
+        lastScore: "Վերջին Արդյունքը",
         moneyPoints: [
             "1000 Դրամ",
             "2000 Դրամ",

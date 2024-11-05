@@ -43,11 +43,11 @@ export const data = [
   },
   {
     question: {
-      en: "Which element has the chemical symbol 'O'?",
+      en: "Which element has the chemical symbol 'Ag'?",
       hy: "Ո՞ր տարրի քիմիական նշանն է 'Ag':",
     },
     options: {
-      en: ["A: Gold", "B: Osmium", "C:  Silver", "D: Oganesson"],
+      en: ["A: Gold", "B: Osmium", "C: Silver", "D: Oganesson"],
       hy: ["A: Ոսկի", "B: Օսմիում", "C: Արծաթ", "D: Օգանեսոն"],
     },
     correctOption: {

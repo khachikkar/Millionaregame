@@ -12,14 +12,11 @@ import lastwin from "../../voices/last.mp3"
 
 
 import translations from "../../internationization/translations";
-
+import {doc, updateDoc} from "firebase/firestore";
+import {db} from "../../services/firebase";
 
 const winMoney = []
 const counts = []
-
-
-
-
 
 
 
@@ -46,13 +43,10 @@ const GameBoard = () => {
 
         return () => {
             themeAudio.pause(); // Pause the audio when component unmounts
-            // lastwinAudio.pause()
             themeAudio.currentTime = (1000 * 60 ); // Reset audio to start
         };
     }, [themeAudio]);
 
-
-const {language} = useContext(GameContext)
 
 
 function handlenewgame (){
@@ -63,9 +57,9 @@ function handlenewgame (){
 
 
 
-const { data } = useContext(GameContext);
+const { data, language, userProfileInfo } = useContext(GameContext);
 
-//   console.log(data);
+const {uid, score} =userProfileInfo
 
   const [lose, setIsLose] = useState(false)
   const [win, setWin] =useState(false)
@@ -77,11 +71,7 @@ const { data } = useContext(GameContext);
   const [friendused, setFriendUsed] = useState(false);
 
 
-
-
-
-
-const additeminright = (e)=>{
+const additeminright = async (e)=>{
 
 
 const answ = e.target.textContent
@@ -92,16 +82,20 @@ if (answ === comp){
     console.log("right")
     setGreenOnOption(true)
 
+    const lastWinAmount = winMoney.at(-1) || 0 // last item
+    const docRef = doc(db, "regusers", uid)
+    await updateDoc(docRef, {
+        score: lastWinAmount
+    })
 
 
 
-
-if(rightAnswer.length === 8){
-    // alert(`you win $${winMoney[winMoney.length-1] || "no money"}`)
+if(counts.length === 8){
     counts.push(1) ///
     setIsLose(true)
     setWin(true)
     lastwinAudio.play()
+
     return // must show play again button and go new game
 }
 
@@ -142,42 +136,18 @@ console.log(counts, "counts")
 }
 }
 
-const answForhelpers = currentQuestion.correctOption[language]
 
+const answForhelpers = currentQuestion.correctOption[language]
 const handleArea  = ()=>{
       alert(`The Area think that correct answer is ${answForhelpers}`)
     setIsDisabled(true)
 }
-
 const handleFriend  = ()=>{
 
         alert(`The Kim Kardashian think that right answer is ${answForhelpers}`)
         setFriendUsed(true)
     }
-
-// const handleFiftyFifty = () => {
-//         if (!fiftyUsed) {
-//             const correctOption = answForhelpers
-//             const options = currentQuestion.options[language];
-//
-//             // Get two options: correct and one random incorrect
-//             const filteredOptions = options.filter(
-//                 (option) => option === correctOption || Math.random() > 0.5
-//             ).slice(0, 2); // Ensure only 2 options remain
-//
-//             // Update the current question with filtered options
-//             setCurrentQuestion({
-//                 ...currentQuestion,
-//                 options: {
-//                     ...currentQuestion.options,
-//                     [language]: {filteredOptions}
-//                 }
-//             });
-//             setFiftyUsed(true); // Mark 50/50 as used
-//         }
-//     };
-
-    const handleFiftyFifty = () => {
+const handleFiftyFifty = () => {
         if (!fiftyUsed) {
             const correctOption = answForhelpers;
             const options = currentQuestion.options[language];
@@ -223,26 +193,40 @@ const handleFriend  = ()=>{
     </div>
 
 
-    <div>
+        <div className="quesions">
 
-    {
-        lose
-        ?
-        win
-        ? <div className="modal win"><h4>{translations[language].congratsWin.replace("{amount}", winMoney[winMoney.length - 1])}</h4><Link to="/game"><Button type="primary">{translations[language].startNewGame}</Button></Link></div>
-        : <div className="modal nowin"><h4>{translations[language].loseMessage.replace("{amount}", winMoney[winMoney.length - 1] || "0")}</h4> <Link to="/game"><Button  type="primary" onClick={handlenewgame}>{translations[language].tryAgain}</Button></Link></div>
-        : <div className="questBlock">
+            <div className="statusBoard">
+                <p>{translations[language].lastScore}: {score}</p>
+            </div>
 
-        <QuestItem  item={currentQuestion} additeminright={additeminright} greenOnOption={greenOnOption} />
-        <div>
-            <Button disabled={fiftyUsed} onClick={handleFiftyFifty}>{translations[language].fiftyFifty}</Button>
-            <Button disabled={isdisabled} onClick={handleArea}>{translations[language].areaHelp}</Button>
-            <Button disabled={friendused} onClick={handleFriend}>{translations[language].friendCall}</Button>
+            {
+
+                lose
+                    ?
+                    win
+                        ? <div className="modal win">
+                            <h4>{translations[language].congratsWin.replace("{amount}", winMoney[winMoney.length - 1])}</h4>
+                            <Link to="/game"><Button type="primary">{translations[language].startNewGame}</Button></Link>
+                        </div>
+                        : <div className="modal nowin">
+                            <h4>{translations[language].loseMessage.replace("{amount}", winMoney[winMoney.length - 1] || "0")}</h4>
+                            <Link to="/game"><Button type="primary"
+                                                     onClick={handlenewgame}>{translations[language].tryAgain}</Button></Link>
+                        </div>
+                    : <div className="questBlock">
+
+                        <QuestItem item={currentQuestion} additeminright={additeminright} greenOnOption={greenOnOption}/>
+                        <div>
+                            <Button disabled={fiftyUsed}
+                                    onClick={handleFiftyFifty}>{translations[language].fiftyFifty}</Button>
+                            <Button disabled={isdisabled} onClick={handleArea}>{translations[language].areaHelp}</Button>
+                            <Button disabled={friendused}
+                                    onClick={handleFriend}>{translations[language].friendCall}</Button>
+                        </div>
+
+                    </div>
+            }
         </div>
-
-        </div>
-    }
-    </div>
 
     </div>
   );
