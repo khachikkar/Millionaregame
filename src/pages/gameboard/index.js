@@ -196,7 +196,7 @@ const handleFiftyFifty = () => {
         <div className="quesions">
 
             <div className="statusBoard">
-                <p>{translations[language].lastScore}: {score}</p>
+                <p>{translations[language].lastScore}: {score || 0}</p>
             </div>
 
             {
